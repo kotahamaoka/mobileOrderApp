@@ -8,7 +8,6 @@ import 'package:mobile_order_app/pages/StoreSelectPage.dart';
 import 'package:mobile_order_app/pages/TopPage.dart';
 import 'package:mobile_order_app/components/ToppingCard.dart';
 import 'package:mobile_order_app/providers/isStoreSelectedProvider.dart';
-import 'package:mobile_order_app/providers/itemsInCartProvider.dart';
 import 'package:mobile_order_app/providers/selectedMenuIndexProvider.dart';
 import 'package:mobile_order_app/providers/selectedToppingIndexProvider.dart';
 
@@ -42,7 +41,6 @@ class MenuDetailPage extends ConsumerWidget {
     final isStoreSelected = ref.watch(isStoreSelectedProvider);
     final selectedMenuIndex = ref.watch(selectedMenuIndexProvider);
     final selectedToppingIndex = ref.watch(selectedToppingIndexProvider);
-    final itemsInCart = ref.watch(itemsInCartProvider);
 
     return FutureBuilder(
         future: fetchData(),
@@ -151,11 +149,6 @@ class MenuDetailPage extends ConsumerWidget {
                                                     MaterialPageRoute(
                                                         builder: (context) =>
                                                             TopPage())),
-                                                itemsInCart.add(id),
-                                                ref
-                                                    .watch(itemsInCartProvider
-                                                        .notifier)
-                                                    .state = itemsInCart
                                               },
                                               child: const Text('Add to cart'),
                                             ),

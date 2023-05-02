@@ -50,34 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
-                  height: 60.0,
-                ),
-                const SizedBox(
-                  height: 48.0,
-                  child: TextField(
-                    obscureText: false,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(), labelText: 'Email'),
-                  ),
-                ),
-                const SizedBox(
                   height: 24.0,
-                ),
-                const SizedBox(
-                  height: 48.0,
-                  child: TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(), labelText: 'Password'),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'Forgot Password ?',
-                    style: TextStyle(
-                        decoration: TextDecoration.underline, fontSize: 16.0),
-                  ),
                 ),
                 SizedBox(
                   width: double.infinity,
@@ -89,41 +62,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 const SizedBox(
                   height: 60.0,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  child: OutlinedButton(
-                    onPressed: () {},
-                    child: const Text('Login with Google'),
-                  ),
-                ),
-                const SizedBox(
-                  height: 4.0,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  child: OutlinedButton(
-                    onPressed: () {},
-                    child: const Text('Login with Apple'),
-                  ),
-                ),
-                const SizedBox(
-                  height: 4.0,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  child: OutlinedButton(
-                    onPressed: () {},
-                    child: const Text('Login with Facebook'),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'Create account',
-                    style: TextStyle(
-                        decoration: TextDecoration.underline, fontSize: 16.0),
-                  ),
                 ),
               ],
             ),

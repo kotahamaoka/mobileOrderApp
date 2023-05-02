@@ -3,14 +3,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_order_app/components/ItemsInCart.dart';
 import 'package:mobile_order_app/pages/SpecifyTimePage.dart';
 import 'package:mobile_order_app/providers/isBottomSheetOpenProvider.dart';
+import 'package:mobile_order_app/providers/itemCountProvider.dart';
 
 class Cart extends ConsumerWidget {
   Cart({Key? key}) : super(key: key);
 
-  int itemCount = 1;
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final int itemCount = ref.watch(itemCountProvider);
     final isBottomSheetOpen = ref.watch(isBottomSheetOpenProvider);
 
     return Builder(

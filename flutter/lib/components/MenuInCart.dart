@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_order_app/components/ItemChangeButton.dart';
 import 'package:mobile_order_app/components/ItemCounterButton.dart';
-import 'package:mobile_order_app/providers/itemsInCartProvider.dart';
 import 'package:mobile_order_app/providers/selectedMenuIndexProvider.dart';
+import 'package:mobile_order_app/providers/selectedToppingIndexProvider.dart';
 
 Future<List<dynamic>> fetchData() async {
   final dio = Dio();
@@ -23,7 +23,7 @@ class MenuInCart extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedMenuIndex = ref.watch(selectedMenuIndexProvider);
-    final itemsInCart = ref.watch(itemsInCartProvider);
+    final selectedToppingIndex = ref.watch(selectedToppingIndexProvider);
 
     return FutureBuilder(
         future: fetchData(),
@@ -32,8 +32,9 @@ class MenuInCart extends ConsumerWidget {
             if (snapshot.hasError) {
               return Text("Error: ${snapshot.error}");
             } else {
-              final name = snapshot.data![selectedMenuIndex]['name'];
-              final price = snapshot.data![selectedMenuIndex]['price'];
+              final menuName = snapshot.data![selectedMenuIndex]['name'];
+              final menuPrice = snapshot.data![selectedMenuIndex]['price'];
+              final toppingName = snapshot.data![selectedToppingIndex]['name'];
               return Column(
                 children: [
                   const Divider(),
@@ -47,13 +48,13 @@ class MenuInCart extends ConsumerWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(name,
+                              Text(menuName,
                                   style: const TextStyle(fontSize: 16.0)),
                               const SizedBox(
                                 height: 8.0,
                               ),
-                              const Text('Pickles',
-                                  style: TextStyle(fontSize: 12.0))
+                              Text(toppingName,
+                                  style: const TextStyle(fontSize: 12.0))
                             ],
                           ),
                           const Spacer(),
@@ -70,7 +71,7 @@ class MenuInCart extends ConsumerWidget {
                   Row(
                     children: [
                       Text(
-                        '\$$price',
+                        '\$$menuPrice',
                         style: const TextStyle(fontSize: 16.0),
                       ),
                       const Spacer(),
