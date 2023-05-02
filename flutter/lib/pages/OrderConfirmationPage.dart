@@ -3,8 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_order_app/components/StoreCard.dart';
 import 'package:mobile_order_app/pages/TopPage.dart';
 import 'package:mobile_order_app/providers/itemCountProvider.dart';
+import 'package:mobile_order_app/providers/selectedPaymentProvider.dart';
 import 'package:mobile_order_app/providers/selectedStoreIndexProvider.dart';
 import 'package:mobile_order_app/providers/specifiedTimeProvider.dart';
+import 'package:mobile_order_app/lists/paymentList.dart';
 
 class OrderConfirmationPage extends ConsumerWidget {
   const OrderConfirmationPage({Key? key}) : super(key: key);
@@ -13,6 +15,7 @@ class OrderConfirmationPage extends ConsumerWidget {
     final itemCount = ref.watch(itemCountProvider);
     final specifiedTime = ref.watch(specifiedTimeProvider);
     final selectedStoreIndex = ref.watch(selectedStoreIndexProvider);
+    final selectedPaymentIndex = ref.watch(selectedPaymentIndexProvider);
 
     return Scaffold(
       appBar: AppBar(title: const Text('Order confirmed')),
@@ -83,7 +86,8 @@ class OrderConfirmationPage extends ConsumerWidget {
             ),
             const Text('Total \$4.00', style: TextStyle(fontSize: 24.0)),
             const SizedBox(height: 24.0),
-            const Text('Payment: PoyPal', style: TextStyle(fontSize: 24.0)),
+            Text('Payment:${paymentList[selectedPaymentIndex].name}',
+                style: const TextStyle(fontSize: 24.0)),
             const Spacer(),
             SizedBox(
                 width: double.infinity,

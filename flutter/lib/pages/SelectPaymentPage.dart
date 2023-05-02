@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_order_app/components/PaymentCard.dart';
 import 'package:mobile_order_app/lists/paymentList.dart';
 import 'package:mobile_order_app/pages/OrderConfirmationPage.dart';
 
-class SelectPaymentPage extends StatefulWidget {
-  const SelectPaymentPage({Key? key}) : super(key: key);
+class SelectPaymentPage extends ConsumerWidget {
+  const SelectPaymentPage({super.key});
 
   @override
-  _SelectPaymentPageState createState() => _SelectPaymentPageState();
-}
-
-class _SelectPaymentPageState extends State<SelectPaymentPage> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Select payment'),
@@ -27,10 +23,10 @@ class _SelectPaymentPageState extends State<SelectPaymentPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     PaymentCard(
-                      cardIndex: 0,
+                      paymentIndex: 0,
                     ),
                     PaymentCard(
-                      cardIndex: 1,
+                      paymentIndex: 1,
                     )
                   ],
                 ),
@@ -38,10 +34,10 @@ class _SelectPaymentPageState extends State<SelectPaymentPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     PaymentCard(
-                      cardIndex: 2,
+                      paymentIndex: 2,
                     ),
                     PaymentCard(
-                      cardIndex: 3,
+                      paymentIndex: 3,
                     )
                   ],
                 ),
@@ -49,10 +45,10 @@ class _SelectPaymentPageState extends State<SelectPaymentPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     PaymentCard(
-                      cardIndex: 4,
+                      paymentIndex: 4,
                     ),
                     PaymentCard(
-                      cardIndex: 5,
+                      paymentIndex: 5,
                     )
                   ],
                 ),

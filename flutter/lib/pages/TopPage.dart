@@ -3,8 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_order_app/components/Cart.dart';
 
 import 'package:mobile_order_app/components/MenuCard.dart';
-import 'package:mobile_order_app/core/Menu.dart';
-import 'package:mobile_order_app/lists/menuList.dart';
 import 'package:mobile_order_app/pages/ProfilePage.dart';
 import 'package:mobile_order_app/providers/isStoreSelectedProvider.dart';
 import 'package:mobile_order_app/providers/selectedIndexProvider.dart';
