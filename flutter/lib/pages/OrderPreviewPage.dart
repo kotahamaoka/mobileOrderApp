@@ -31,127 +31,131 @@ class OrderPreviewPage extends ConsumerWidget {
     final selectedToppingIndex = ref.watch(selectedToppingIndexProvider);
 
     return FutureBuilder(
+        future: fetchData(),
         builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
-      if (snapshot.connectionState == ConnectionState.done) {
-        if (snapshot.hasError) {
-          return Text("Error: ${snapshot.error}");
-        } else {
-          final menuName = snapshot.data![selectedMenuIndex]['name'];
-          final menuPrice = snapshot.data![selectedMenuIndex]['price'];
-          final toppingName = snapshot.data![selectedToppingIndex]['name'];
-          return Scaffold(
-            appBar: AppBar(title: const Text('Order preview')),
-            body: SafeArea(
-                child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Store',
-                    style: TextStyle(fontSize: 24.0),
-                  ),
-                  const SizedBox(
-                    height: 8.0,
-                  ),
-                  StoreCard(
-                    isReadOnly: true,
-                    storeIndex: selectedStoreIndex,
-                  ),
-                  const SizedBox(
-                    height: 24.0,
-                  ),
-                  const Text(
-                    'Time',
-                    style: TextStyle(fontSize: 24.0),
-                  ),
-                  const SizedBox(
-                    height: 12.0,
-                  ),
-                  Text(specifiedTime),
-                  const SizedBox(
-                    height: 24.0,
-                  ),
-                  const Text(
-                    'Items',
-                    style: TextStyle(fontSize: 24.0),
-                  ),
-                  const SizedBox(
-                    height: 8.0,
-                  ),
-                  Card(
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasError) {
+              return Text("Error: ${snapshot.error}");
+            } else {
+              final menuName = snapshot.data![selectedMenuIndex]['name'];
+              final menuPrice = snapshot.data![selectedMenuIndex]['price'];
+              final toppingName = snapshot.data![selectedToppingIndex]['name'];
+              return Scaffold(
+                appBar: AppBar(title: const Text('Order preview')),
+                body: SafeArea(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12.0, vertical: 16.0),
-                      child: Column(children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(menuName),
-                                const SizedBox(
-                                  height: 8.0,
-                                ),
-                                Text(
-                                  toppingName,
-                                  style: const TextStyle(fontSize: 12.0),
-                                )
-                              ],
-                            ),
-                            const ItemChangeButton()
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 24.0,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [Text('\$$menuPrice'), ItemCounterButton()],
-                        ),
-                      ]),
-                    ),
-                  ),
-                  const Spacer(),
-                  Text(
-                    'Total \$$menuPrice',
-                    style: const TextStyle(fontSize: 24.0),
-                  ),
-                  const SizedBox(
-                    height: 24.0,
-                  ),
-                  Row(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 8.0, vertical: 12.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(
-                        child: OutlinedButton(
-                          child: const Text('Cancel'),
-                          onPressed: () => {},
-                        ),
+                      const Text(
+                        'Store',
+                        style: TextStyle(fontSize: 24.0),
                       ),
                       const SizedBox(
-                        width: 8.0,
+                        height: 8.0,
                       ),
-                      Expanded(
-                          child: ElevatedButton(
-                              onPressed: () => {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const SelectPaymentPage()))
-                                  },
-                              child: const Text('Select Payment')))
+                      StoreCard(
+                        isReadOnly: true,
+                        storeIndex: selectedStoreIndex,
+                      ),
+                      const SizedBox(
+                        height: 24.0,
+                      ),
+                      const Text(
+                        'Time',
+                        style: TextStyle(fontSize: 24.0),
+                      ),
+                      const SizedBox(
+                        height: 12.0,
+                      ),
+                      Text(specifiedTime),
+                      const SizedBox(
+                        height: 24.0,
+                      ),
+                      const Text(
+                        'Items',
+                        style: TextStyle(fontSize: 24.0),
+                      ),
+                      const SizedBox(
+                        height: 8.0,
+                      ),
+                      Card(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12.0, vertical: 16.0),
+                          child: Column(children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(menuName),
+                                    const SizedBox(
+                                      height: 8.0,
+                                    ),
+                                    Text(
+                                      toppingName,
+                                      style: const TextStyle(fontSize: 12.0),
+                                    )
+                                  ],
+                                ),
+                                const ItemChangeButton()
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 24.0,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text('\$$menuPrice'),
+                                ItemCounterButton()
+                              ],
+                            ),
+                          ]),
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        'Total \$$menuPrice',
+                        style: const TextStyle(fontSize: 24.0),
+                      ),
+                      const SizedBox(
+                        height: 24.0,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: OutlinedButton(
+                              child: const Text('Cancel'),
+                              onPressed: () => {},
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                              child: ElevatedButton(
+                                  onPressed: () => {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const SelectPaymentPage()))
+                                      },
+                                  child: const Text('Select Payment')))
+                        ],
+                      )
                     ],
-                  )
-                ],
-              ),
-            )),
-          );
-        }
-      } else {
-        return const CircularProgressIndicator();
-      }
-    });
+                  ),
+                )),
+              );
+            }
+          } else {
+            return const Text('No results');
+          }
+        });
   }
 }

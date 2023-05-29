@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:mobile_order_app/components/PaymentCard.dart';
-import 'package:mobile_order_app/lists/paymentList.dart';
 import 'package:mobile_order_app/pages/OrderConfirmationPage.dart';
 
 class SelectPaymentPage extends ConsumerWidget {
@@ -21,7 +21,7 @@ class SelectPaymentPage extends ConsumerWidget {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     PaymentCard(
                       paymentIndex: 0,
                     ),
@@ -32,7 +32,7 @@ class SelectPaymentPage extends ConsumerWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     PaymentCard(
                       paymentIndex: 2,
                     ),
@@ -43,7 +43,7 @@ class SelectPaymentPage extends ConsumerWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     PaymentCard(
                       paymentIndex: 4,
                     ),
